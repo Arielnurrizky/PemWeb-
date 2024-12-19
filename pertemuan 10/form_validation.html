@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script>
+        function validateForm() {
+            var nama = document.getElementById("nama").value;
+            var email = document.getElementById("email").value;
+            var jam = document.getElementById("jam").value;
+            var tujuan = document.getElementById("tujuan").value;
+            var jumlah = document.getElementById("jumlah").value;
+            var error = [];
+
+            // Cek Nama Pelanggan
+            if (nama.trim() === "") {
+                error.push("Nama pelanggan harus diisi.");
+            }
+
+            // Cek Email
+            var emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+            if (email.trim() === "") {
+                error.push("Email harus diisi.");
+            } else if (!emailPattern.test(email)) {
+                error.push("Email tidak valid.");
+            }
+
+            // Cek Jam Keberangkatan
+            if (jam.trim() === "") {
+                error.push("Jam keberangkatan harus diisi.");
+            }
+
+            // Cek Tujuan Keberangkatan
+            if (tujuan === "") {
+                error.push("Tujuan keberangkatan harus dipilih.");
+            }
+
+            // Cek Jumlah Tiket
+            if (jumlah <= 0 || jumlah.trim() === "") {
+                error.push("Jumlah tiket harus lebih dari 0.");
+            }
+
+            // Jika ada error, tampilkan pesan kesalahan
+            if (error.length > 0) {
+                alert("Kesalahan:\n" + error.join("\n"));
+                return false; // Menghentikan pengiriman form
+            }
+
+            // Jika validasi semua sukses
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Form Pemesanan Tiket</h2>
+
+    <form onsubmit="return validateForm()">
+        <div>
+            <label for="nama">Nama Pelanggan:</label>
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama pelanggan">
+        </div>
+        <br>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Masukkan email pelanggan">
+        </div>
+        <br>
+
+        <div>
+            <label for="jam">Jam Keberangkatan:</label>
+            <input type="time" id="jam" name="jam">
+        </div>
+        <br>
+
+        <div>
+            <label for="tujuan">Tujuan Keberangkatan:</label>
+            <select id="tujuan" name="tujuan">
+                <option value="">Pilih Tujuan</option>
+                <option value="Jakarta">Jakarta</option>
+                <option value="Bandung">Bandung</option>
+                <option value="Yogyakarta">Yogyakarta</option>
+                <option value="Surabaya">Surabaya</option>
+            </select>
+        </div>
+        <br>
+
+        <div>
+            <label for="jumlah">Jumlah Tiket:</label>
+            <input type="number" id="jumlah" name="jumlah" min="1" placeholder="Jumlah tiket yang dipesan">
+        </div>
+        <br>
+
+        <button type="submit">Pesan Tiket</button>
+    </form>
+</body>
+</html>
+

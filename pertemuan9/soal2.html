@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menghitung kurs rupiah</title>
+</head>
+<body>
+    <h1>Konversi ruoiah ke dollar</h1>
+    <!-- 
+        1. membuat imput untuk rupiah
+        2. tag p untuk menampung hasil
+        3. deklarasi varialbel rupiah untuk menampung nilai input
+        4. hitung pembagian dari variabel rupiah di bagi 15942 lalu simpan ke variabel hasil 
+     -->
+
+     <label for="ruoiah">masukan nilai rupiah</label>
+     <input type="number" id="rupiah">
+    
+    <p hasil konvers ke dollar: <span id="hasil"></span>></p>
+    <h1>Konversi dollar ke rupiah</h1>
+
+    <label  for="dollar">masukan  nilai dollar :</label>
+    <input type="nuber" id="dollar">
+
+    <p>Hasil konversi ke rupiah: <span id="hasil"></span></p>
+
+    <!-- java script -->
+
+<script>
+   function rupiah_ke_dollar() {
+    let rupiah=document.getElementById('rupiah').value;
+    let hasil1=rupiah/15942
+
+    document.getElementById("hasi1l").innerHTML=hasil1.toFixed(2)
+   }
+
+   function dollar_ke_rupiah() {
+    let dollar = document.getElementById('dollar').value;
+   let hasil2 =dollar*15942
+   }
+
+</script>
+
+</body>
+</html>
